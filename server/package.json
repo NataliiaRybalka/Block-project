@@ -19,5 +19,8 @@
     "knex": "^0.21.21",
     "mysql": "^2.18.1",
     "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
