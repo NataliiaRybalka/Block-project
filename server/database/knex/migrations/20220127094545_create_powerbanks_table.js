@@ -1,5 +1,5 @@
-const { BLOCK } = require('../../../constants/database.enum');
-const { POWERBANK } = require('../../../constants/database.enum');
+import { BLOCK } from '../../../constants/database.enum';
+import { POWERBANK } from '../../../constants/database.enum';
 
 exports.up = function(knex) {
   return knex.schema.createTable(POWERBANK, table => {
@@ -12,3 +12,4 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.dropTable(POWERBANK);
 };
+

@@ -1,4 +1,4 @@
-const { BLOCK } = require('../../../constants/database.enum');
+import { BLOCK } from '../../../constants/database.enum';
 
 exports.seed = function(knex) {
   const blocks = [];

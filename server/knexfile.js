@@ -1,4 +1,4 @@
-const development = {
+export const development = {
   client: 'mysql',
   connection: {
     host : 'localhost',
@@ -14,5 +14,3 @@ const development = {
     tableName: 'seeds'
   }
 };
-
-module.exports = development;

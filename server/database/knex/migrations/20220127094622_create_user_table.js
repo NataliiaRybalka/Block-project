@@ -1,5 +1,5 @@
-const { POWERBANK } = require('../../../constants/database.enum');
-const { USER } = require('../../../constants/database.enum');
+import { POWERBANK } from '../../../constants/database.enum';
+import { USER } from '../../../constants/database.enum';
 
 exports.up = function(knex) {
   console.log(USER);

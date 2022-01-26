@@ -1,5 +1,5 @@
-const { USER } = require('../../../constants/database.enum');
-const { USER_TOKEN } = require('../../../constants/database.enum');
+import { USER } from '../../../constants/database.enum';
+import { USER_TOKEN } from '../../../constants/database.enum';
 
 exports.up = function(knex) {
   return knex.schema.createTable(USER_TOKEN, table => {

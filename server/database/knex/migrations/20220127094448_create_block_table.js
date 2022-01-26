@@ -1,4 +1,4 @@
-const { BLOCK } = require('../../../constants/database.enum');
+import { BLOCK } from '../../../constants/database.enum';
 
 exports.up = function(knex) {
   return knex.schema.createTable(BLOCK, table => {

@@ -1,11 +1,4 @@
-const BLOCK = 'block';
-const POWERBANK = 'powerbank';
-const USER = 'user';
-const USER_TOKEN = 'user_token';
-
-module.exports = {
-  BLOCK,
-  POWERBANK,
-  USER,
-  USER_TOKEN
-}
+export const  BLOCK = 'block';
+export const  POWERBANK = 'powerbank';
+export const  USER = 'user';
+export const  USER_TOKEN = 'user_token';

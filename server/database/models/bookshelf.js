@@ -1,6 +1,4 @@
-const bookshelf = require('bookshelf');
-const knexConf = require('../knex/knex');
+import { knexConf } from '../knex/knex';
+import bookshelf from 'bookshelf';
 
-const bookshelfConf = bookshelf(knexConf);
-
-module.exports = bookshelfConf;
+export const bookshelfConf = bookshelf(knexConf);

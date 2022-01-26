@@ -1,4 +1,4 @@
-const { POWERBANK } = require('../../../constants/database.enum');
+import { POWERBANK } from '../../../constants/database.enum';
 
 exports.seed = function(knex) {
   const powerbanks = [];
