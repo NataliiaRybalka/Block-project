@@ -1,21 +1,27 @@
 import { NotFound, BadRequest } from "../constants/responseCodes.enum";
 
-import { getBlocksWithPowerbanksRepository, changePowerbankInStockRepository } from '../repositories/block.repository';
+import { getBlocksRepository, getBlocksWithPowerbanksRepository, changePowerbankInStockRepository } from '../repositories/block.repository';
 import { updateUserPowerbankRepository, getUserPowerbankRepository } from '../repositories/user.repository';
 
 export const getBlocksService = async () => {
   try {
-    return await getBlocksWithPowerbanksRepository();
+    const powerbanks = await getBlocksWithPowerbanksRepository();
+    const blocks = await getBlocksRepository();
+
+    return {
+      powerbanks,
+      blocks
+    }
   } catch (e) {
     throw new Error(NotFound, 'Blocks not found');
   }
 };
 
-export const changePowerbankInStockService = async (powerbankId, powerbankInStock, userId) => {
+export const changePowerbankInStockService = async (powerbankId, powerbank, userId) => {
   try {
-    await changePowerbankInStockRepository(powerbankId.id, powerbankInStock.in_stock);
+    await changePowerbankInStockRepository(powerbankId.id, powerbank.in_stock, powerbank.block_id);
 
-    const powerbankIdForUser = !powerbankInStock.in_stock ? powerbankId.id : null;
+    const powerbankIdForUser = !powerbank.in_stock ? powerbankId.id : null;
     await updateUserPowerbankRepository(userId, powerbankIdForUser);
 
     return;

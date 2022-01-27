@@ -13,7 +13,7 @@ export const getUsersRepository = async () => {
   try {
     return await User.fetchAll();
   } catch (e) {
-    throw new ErrorHandler(NotFound, 'Users not found');
+    console.log(e);
   }
 };
 

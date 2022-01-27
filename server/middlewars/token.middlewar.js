@@ -5,7 +5,7 @@ import { getTokenByATRepository, getTokenByRTRepository } from '../repositories/
 export const checkAccessToken = async (req, res, next) => {
   try {
     const token = req.get('Authorization');
-    
+
     await verifyToken(token);
 
     let userTokens = await getTokenByATRepository(token);

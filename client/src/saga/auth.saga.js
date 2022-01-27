@@ -12,6 +12,7 @@ export function* registrationWorker(data) {
     const payload = yield call(registration, data.payload);
     if (payload.status === Created) {
       yield put({ type: REGISTRATION_SUCCESS, payload: payload.data });
+      yield put(setTokenAndRoleServiceWherLogin(payload.data.user.id, payload.data.userTokens));
     } else {
       throw payload;
     }
@@ -29,7 +30,7 @@ export function* loginWorker(data) {
     const payload = yield call(login, data.payload);
     if (payload.status === OK) {
       yield put({ type: LOGIN_SUCCESS, payload: payload.data });
-      yield put(setTokenAndRoleServiceWherLogin(payload.data.user.id, payload.data.userTokens, payload.data.user.role_id));
+      yield put(setTokenAndRoleServiceWherLogin(payload.data.user.id, payload.data.userTokens));
     } else {
       throw payload;
     }

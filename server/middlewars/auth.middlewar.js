@@ -43,6 +43,7 @@ export const checkIsEmailCorrect = async (req, res, next) => {
     }
 
     req.user = user;
+
     next();
   } catch (e) {
     res.status(Unauthorized).json('Wrong email or password');

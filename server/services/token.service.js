@@ -10,7 +10,17 @@ export const createTokensService = async (userId) => {
   }
 };
 
-export const getTokensService = async (userId) => {
+export const getTokensRegistrService = async (userId) => {
+  try {
+    let tokens = await getTokenByUserIdRepository(userId);
+    tokens = tokens.toJSON();
+    return tokens[0];
+  } catch (e) {
+    throw new ErrorHandler(e.status, e.message);
+  }
+};
+
+export const getTokensLoginService = async (userId) => {
   try {
     return await getTokenByUserIdRepository(userId);
   } catch (e) {

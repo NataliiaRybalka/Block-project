@@ -8,18 +8,24 @@ import { Powerbank } from "./Powerbank";
 export const Block = () => {
   const dispatch = useDispatch();
   const powerbanks = useSelector(state => state.blockReducer.powerbanks);
+  const blocks = useSelector(state => state.blockReducer.blocks);
 
   useEffect(() => {
     dispatch(getPowerbanks());
 
-    if (!!localStorage.getItem('id')) {
+    if (!!localStorage.getItem('refresh_token')) {
       dispatch(getUserPowerbank());
     }
   }, [dispatch]);
 
   return (
     <div id={'blocksContainer'}>
-      {powerbanks?.map(powerbank => <Powerbank powerbank={powerbank} key={powerbank.id} />)}
+      {blocks?.map(block => (
+        <div className={'block'} key={block.id}>
+          <span className={'blockName'}>{block.id} Block</span>
+          {/* <Powerbank powerbank={powerbank} key={powerbank.id} /> */}
+        </div>
+      ))}
     </div>
   );
 };

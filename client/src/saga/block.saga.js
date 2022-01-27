@@ -35,7 +35,7 @@ export function* changePowerbankInStockWorker(data) {
 };
 const changePowerbankInStock = async (powerbank) => {
   const { request } = httpHelper();
-  return await request(`${LOCALHOST}blocks/${powerbank.id}`, localStorage.getItem('access_token'), PUT, {in_stock: powerbank.in_stock});
+  return await request(`${LOCALHOST}blocks/${powerbank.id}`, localStorage.getItem('access_token'), PUT, powerbank);
 };
 
 export function* getUserPowerbankWorker() {
