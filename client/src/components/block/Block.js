@@ -14,7 +14,9 @@ export const Block = () => {
 
   for (let i = 0; i < blocks.length; i++) {
     for (let j = 0; j < powerbanks.length; j++) {
-      blocks[i].powerbank = powerbanks[i];
+      if (blocks[i].id === powerbanks[j].block_id) {
+        blocks[i].powerbank = powerbanks[j];
+      }
     }
   }
 
@@ -39,14 +41,21 @@ export const Block = () => {
 
     const powerbank = powerbanks.find(powerbank => powerbank.id === myPowerBank);
     dispatch(changePowerbankInStock(powerbank));
+
+    blocks.map(block => {
+      if (block.id === blockId) {
+        block.powerbank = powerbank;
+      }
+      return block;
+    })
   };
 
   return (
     <div id={'blocksContainer'}>
       {blocks?.map(block => (
-        <div className={doReturn && !block.powerbank.in_stock ? 'block select' : 'block'} key={block.id}>
+        <div className={doReturn && !block.powerbank?.in_stock ? 'block select' : 'block'} key={block.id}>
           <span onClick={() => onSelectEmptyBlock(block.id)} className={'blockName'}>{block.id} Block</span>
-          <Powerbank powerbank={block.powerbank} key={block.powerbank.id} />
+          <Powerbank powerbank={block.powerbank} key={!!block.powerbank && block.powerbank.id} />
         </div>
       ))}
     </div>
