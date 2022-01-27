@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import './Block.css';
-import { getPowerbanks } from '../../redux/actions/block.actions';
+import { getPowerbanks, getUserPowerbank } from '../../redux/actions/block.actions';
 import { Powerbank } from "./Powerbank";
 
 export const Block = () => {
@@ -11,6 +11,10 @@ export const Block = () => {
 
   useEffect(() => {
     dispatch(getPowerbanks());
+
+    if (!!localStorage.getItem('id')) {
+      dispatch(getUserPowerbank());
+    }
   }, [dispatch]);
 
   return (

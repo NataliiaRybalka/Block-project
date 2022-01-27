@@ -32,3 +32,11 @@ export const updateUserPowerbankRepository = async (id, powerbank_id) => {
     throw new Error(BadRequest, 'User powerbank was not updated');
   }
 };
+
+export const getUserPowerbankRepository = async (id) => {
+  try {
+    return await User.where({ id }).fetch({ columns: ['powerbank_id'] });
+  } catch (e) {
+    throw new ErrorHandler(NotFound, 'User not found');
+  }
+};

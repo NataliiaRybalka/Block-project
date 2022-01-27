@@ -1,7 +1,7 @@
 import { NotFound, BadRequest } from "../constants/responseCodes.enum";
 
 import { getBlocksWithPowerbanksRepository, changePowerbankInStockRepository } from '../repositories/block.repository';
-import { updateUserPowerbankRepository } from '../repositories/user.repository';
+import { updateUserPowerbankRepository, getUserPowerbankRepository } from '../repositories/user.repository';
 
 export const getBlocksService = async () => {
   try {
@@ -19,6 +19,14 @@ export const changePowerbankInStockService = async (powerbankId, powerbankInStoc
     await updateUserPowerbankRepository(userId, powerbankIdForUser);
 
     return;
+  } catch (e) {
+    throw new Error(BadRequest, 'Powerblock was not updated');
+  }
+};
+
+export const getUserPowerbankService = async (userId) => {
+  try {
+    return await getUserPowerbankRepository(userId.userId);
   } catch (e) {
     throw new Error(BadRequest, 'Powerblock was not updated');
   }

@@ -1,4 +1,4 @@
-import { GET_POWERBANKS, SAVE_TO_MY_POWERBANK, RETURN_MY_POWERBANK } from '../types/block.types';
+import { GET_POWERBANKS, SAVE_TO_MY_POWERBANK, RETURN_MY_POWERBANK, GET_USER_POWERBANKS } from '../types/block.types';
 
 const initialState = {
   powerbanks: [],
@@ -15,6 +15,9 @@ export const blockReducer = (state = initialState, action) => {
 
     case RETURN_MY_POWERBANK:
       return {...state, myPowerBank: null};
+
+    case GET_USER_POWERBANKS: 
+      return {...state, myPowerBank: action.payload};
 
     default:
       return state; 
