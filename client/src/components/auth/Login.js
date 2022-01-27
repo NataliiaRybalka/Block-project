@@ -7,6 +7,7 @@ import { login } from '../../redux/actions/auth.actions';
 import { Registration } from "./Registration";
 import { Email } from "./Email";
 import { Password } from "./Password";
+import { Block } from "../block/Block";
 
 export const Login = () => {
   const [toRegistration, setToRegistration] = useState(false);
@@ -42,6 +43,8 @@ export const Login = () => {
 
       <span onClick={() => setToRegistration(true)} id={'toRegistration'}>registration</span>
       {toRegistration && <Redirect to='/registration'> <Registration /> </Redirect>}
+
+      {Object.keys(user).length !== 0 && <Redirect to='/'> <Block /> </Redirect> }
     </div>
   );
 };
