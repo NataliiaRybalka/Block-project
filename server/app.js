@@ -1,0 +1,28 @@
+import cors from 'cors';
+import express from 'express';
+// import { Server } from 'socket.io';
+
+import { PORT } from './constants/env.constants';
+// import { ioFunc } from './helpers/socket.helper';
+import authRouter from './routes/auth.router';
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/auth', authRouter);
+
+const connection = app.listen(PORT, () => {
+    console.log(`App listen ${ PORT }`);
+});
+
+// export const io = new Server(connection, {
+//     cors: {
+//         origin: LOCALHOST,
+//         methods: ['GET', 'POST', 'PUT', 'DELETE']
+//     }
+// });
+
+// ioFunc(io);
