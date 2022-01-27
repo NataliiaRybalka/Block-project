@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { checkDataValidity, checkIsEmailBusy } from '../middlewars/auth.middlewar';
-import { createUser } from '../controllers/auth.controller';
+import { checkDataValidity, checkIsEmailBusy, checkIsEmailCorrect } from '../middlewars/auth.middlewar';
+import { createUser, loginUser } from '../controllers/auth.controller';
 
 const router = Router();
 
@@ -12,12 +12,10 @@ router.post(
     createUser
 );
 
-// router.post(
-//     '/login',
-//     loginMiddlewar.checkIsEmailCorrect,
-//     loginMiddlewar.checkIsEmailConfirmed,
-//     loginMiddlewar.checkRole,
-//     loginController.loginUser
-// );
+router.post(
+    '/login',
+    checkIsEmailCorrect,
+    loginUser
+);
 
 export default router;

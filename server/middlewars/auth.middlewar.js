@@ -1,5 +1,5 @@
-import { BadRequest } from '../constants/responseCodes.enum';
-import { checkIsUserPresentRepository } from '../repositories/user.repository';
+import { BadRequest, Unauthorized } from '../constants/responseCodes.enum';
+import { checkIsUserPresentRepository, getUserByEmailRepository } from '../repositories/user.repository';
 import { createUserData } from '../validators/auth.validator';
 
 export const checkDataValidity = async(req, res, next) => {
@@ -29,5 +29,22 @@ export const checkIsEmailBusy = async (req, res, next) => {
     next();
   } catch (e) {
     res.status(Unauthorized).json(e.errors);
+  }
+};
+
+export const checkIsEmailCorrect = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+    let user = await getUserByEmailRepository(email);
+    user = user.toJSON();
+    if (!user) {
+      throw new Error(Unauthorized, 'Wrong email or password');
+    }
+
+    req.user = user;
+    next();
+  } catch (e) {
+    res.status(Unauthorized).json('Wrong email or password');
   }
 };

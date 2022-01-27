@@ -3,7 +3,7 @@ import { User } from '../database/models/User';
 
 export const getUserByEmailRepository = async (email) => {
   try {
-    return await User.where({ email }).fetchAll();
+    return await User.where({ email }).fetch();
   } catch (e) {
     throw new ErrorHandler(NotFound, 'User not found');
   }
