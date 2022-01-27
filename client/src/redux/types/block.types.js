@@ -1,0 +1,2 @@
+export const GET_BLOCKS = 'CARDS/GET_BLOCKS';
+export const REQUEST_BLOCKS = 'CARDS/REQUEST_BLOCKS';
