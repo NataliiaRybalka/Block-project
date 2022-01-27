@@ -2,19 +2,20 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import './Block.css';
-import { getBlocks } from '../../redux/actions/block.actions';
+import { getPowerbanks } from '../../redux/actions/block.actions';
+import { Powerbank } from "./Powerbank";
 
 export const Block = () => {
   const dispatch = useDispatch();
-  const blocks = useSelector(state => state.blockReducer.blocks);
+  const powerbanks = useSelector(state => state.blockReducer.powerbanks);
 
   useEffect(() => {
-    dispatch(getBlocks());
+    dispatch(getPowerbanks());
   }, [dispatch]);
 
   return (
     <div id={'blocksContainer'}>
-      {blocks?.map(block => <div key={block.id} className={"block"}>{block.id}</div>)}
+      {powerbanks?.map(powerbank => <Powerbank powerbank={powerbank} key={powerbank.id} />)}
     </div>
   );
 };

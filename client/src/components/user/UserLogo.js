@@ -1,6 +1,6 @@
 import './User.css';
 
-export const User = () => {
+export const UserLogo = () => {
   
   return (
     <div id={'userPage'}>

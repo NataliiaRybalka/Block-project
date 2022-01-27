@@ -1,10 +1,10 @@
 import { NotFound } from "../constants/responseCodes.enum";
 
-import { getBlocksRepository } from '../repositories/block.repository';
+import { getBlocksWithPowerbanksRepository } from '../repositories/block.repository';
 
 export const getBlocksService = async () => {
   try {
-    return await getBlocksRepository();
+    return await getBlocksWithPowerbanksRepository();
   } catch (e) {
     throw new Error(NotFound, 'Blocks not found');
   }

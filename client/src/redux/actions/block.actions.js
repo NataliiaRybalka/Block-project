@@ -1,7 +1,7 @@
-import { REQUEST_BLOCKS } from '../types/block.types';
+import { REQUEST_POWERBANKS } from '../types/block.types';
 
-export const getBlocks = () => {
+export const getPowerbanks = () => {
   return {
-    type: REQUEST_BLOCKS
+    type: REQUEST_POWERBANKS
   }
 };

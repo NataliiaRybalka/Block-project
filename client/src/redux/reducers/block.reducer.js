@@ -1,13 +1,13 @@
-import { GET_BLOCKS } from '../types/block.types';
+import { GET_POWERBANKS } from '../types/block.types';
 
 const initialState = {
-  blocks: []
+  powerbanks: []
 };
 
 export const blockReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_BLOCKS:
-      return {...state, blocks: action.payload};
+    case GET_POWERBANKS:
+      return {...state, powerbanks: action.payload};
 
     default:
       return state; 
