@@ -16,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authRouter);
 app.use('/blocks', blockRouter);
 
+app.use((err, req, res, next) => {
+    res.status(err.status).json(err.message);
+});
+
 const connection = app.listen(PORT, () => {
     console.log(`App listen ${ PORT }`);
 });

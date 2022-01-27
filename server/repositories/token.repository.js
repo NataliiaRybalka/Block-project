@@ -22,3 +22,19 @@ export const getTokenByUserIdRepository = async (user_id) => {
     throw new ErrorHandler(NotFound, 'Tokens not found');
   }
 };
+
+export const getTokenByATRepository = async (access_token) => {
+  try {
+    return await UserToken.where({ access_token }).fetch();
+  } catch (e) {
+    throw new ErrorHandler(NotFound, 'Token not found');
+  }
+};
+
+export const getTokenByRTRepository = async (refresh_token) => {
+  try {
+    return await UserToken.where({ refresh_token }).fetch();
+  } catch (e) {
+    throw new ErrorHandler(NotFound, 'Token not found');
+  }
+};

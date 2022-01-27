@@ -1,4 +1,4 @@
-import { NotFound } from '../constants/responseCodes.enum';
+import { NotFound, BadRequest } from '../constants/responseCodes.enum';
 import { User } from '../database/models/User';
 
 export const getUserByEmailRepository = async (email) => {
@@ -22,5 +22,13 @@ export const checkIsUserPresentRepository = async (email) => {
     return await User.where({ email }).fetch();
   } catch (e) {
     console.log(e);
+  }
+};
+
+export const updateUserPowerbankRepository = async (id, powerbank_id) => {
+  try {
+    return await User.forge({ id }).save({ powerbank_id });
+  } catch (e) {
+    throw new Error(BadRequest, 'User powerbank was not updated');
   }
 };

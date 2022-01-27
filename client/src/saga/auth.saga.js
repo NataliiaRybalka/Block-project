@@ -16,6 +16,7 @@ export function* registrationWorker(data) {
       throw payload;
     }
   } catch (e) {
+    throw new Error(e);
   }
 };
 const registration = async (data) => {
@@ -33,6 +34,7 @@ export function* loginWorker(data) {
       throw payload;
     }
   } catch (e) {
+    throw new Error(e);
   }
 };
 const login = async (data) => {

@@ -1,6 +1,18 @@
-#toLogin {
+#toLogin, #myPowerbankBtn {
   width: 100px;
   height: 50px;
   background: green;
   margin: 20px;
+}
+
+#takenBlocks {
+  display: inline-block;
+  border: 1px solid black;
+  width: 500px;
+  height: 100px;
+  margin: 20px;
+}
+
+.notVisible {
+  display: none;
 }
