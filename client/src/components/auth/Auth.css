@@ -1,0 +1,61 @@
+.form {
+  margin: 0 auto;
+  border: 2px dashed #4dffff;
+  width: 500px;
+}
+
+.form > div {
+  margin: 20px 30%;
+}
+
+.form > button {
+  display:block;
+  width:100px;
+  height: 100%;
+  margin: 0 auto 10px;
+}
+
+#toRegistration {
+  font-size: 15px;
+  cursor: pointer;
+  display:block;
+  width:100px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#loginWithBtns {
+  display: flex;
+  justify-content: space-around;
+}
+
+#googleLogin, #facebookLogin {
+  width: 100px;
+}
+
+#googleLogin > button {
+  width: 100%;
+  margin-left: -50px;
+}
+
+.facebookLoginClass {
+  margin-right: -50px;
+  height: 45px;
+  width: 100%;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #4c69ba;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#forgotPassword {
+  margin-left: 40%;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #ff4dff;
+  cursor: pointer;
+}
