@@ -10,8 +10,8 @@ export const Powerbank = ({ powerbank }) => {
   const takePowerbank = (powerbank) => {
     if (!myPowerBank) {
       dispatch(saveToMyPowerbank(powerbank.id));
-      dispatch(changePowerbankInStock(powerbank));
       powerbank.in_stock = false;
+      dispatch(changePowerbankInStock(powerbank));
     } else {
       throw new Error('You can not take more');
     }

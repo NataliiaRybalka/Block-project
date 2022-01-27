@@ -1,4 +1,4 @@
-import { REQUEST_POWERBANKS, SAVE_TO_MY_POWERBANK, CHANGE_POWERBANK_IN_STOCK } from '../types/block.types';
+import { REQUEST_POWERBANKS, SAVE_TO_MY_POWERBANK, CHANGE_POWERBANK_IN_STOCK, RETURN_MY_POWERBANK } from '../types/block.types';
 
 export const getPowerbanks = () => {
   return {
@@ -17,5 +17,12 @@ export const changePowerbankInStock = powerbank => {
   return {
     type: CHANGE_POWERBANK_IN_STOCK,
     payload: powerbank
+  }
+};
+
+export const returnMyPowerbank = powerbankId => {
+  return {
+    type: RETURN_MY_POWERBANK,
+    payload: powerbankId
   }
 };

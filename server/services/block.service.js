@@ -14,7 +14,9 @@ export const getBlocksService = async () => {
 export const changePowerbankInStockService = async (powerbankId, powerbankInStock, userId) => {
   try {
     await changePowerbankInStockRepository(powerbankId.id, powerbankInStock.in_stock);
-    await updateUserPowerbankRepository(userId, powerbankId.id);
+
+    const powerbankIdForUser = !powerbankInStock.in_stock ? powerbankId.id : null;
+    await updateUserPowerbankRepository(userId, powerbankIdForUser);
 
     return;
   } catch (e) {
