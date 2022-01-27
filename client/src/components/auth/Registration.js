@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import './Auth.css';
 import { registration } from '../../redux/actions/auth.actions';
@@ -15,6 +15,7 @@ export const Registration = () => {
     password: ''
   });
   const dispatch = useDispatch();
+  const user = useSelector(state => state.authReducer.user);
 
   const onChangeInputHandler = e => {
     setInputValues(prev => ({
