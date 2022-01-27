@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.increments('id').primary();
     table.integer('block_id').unsigned();
     table.foreign('block_id').references('id').inTable(BLOCK);
+    table.boolean('in_stock');
   })
 };
 

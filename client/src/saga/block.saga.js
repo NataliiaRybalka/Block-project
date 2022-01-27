@@ -9,7 +9,7 @@ export function* getBlocksWorker() {
   try {
     const payload = yield call(getBlocks);
     if (payload.status === OK) {
-      yield put({ type: GET_BLOCKS });
+      yield put({ type: GET_BLOCKS, payload: payload.data });
     } else {
       throw payload;
     }

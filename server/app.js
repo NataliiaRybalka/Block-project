@@ -5,6 +5,7 @@ import express from 'express';
 import { PORT } from './constants/env.constants';
 // import { ioFunc } from './helpers/socket.helper';
 import authRouter from './routes/auth.router';
+import blockRouter from './routes/block.router';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRouter);
+app.use('/blocks', blockRouter);
 
 const connection = app.listen(PORT, () => {
     console.log(`App listen ${ PORT }`);

@@ -6,7 +6,8 @@ exports.seed = function(knex) {
   for (let i = 1; i <= 10; i++) {
     powerbanks.push({
       id: i,
-      block_id: i
+      block_id: i,
+      in_stock: true
     });
   }
 

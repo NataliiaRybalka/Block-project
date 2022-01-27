@@ -1,0 +1,12 @@
+#blocksContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.block {
+  border: 1px solid black;
+  width: 27%;
+  height: 50px;
+  margin-top: 30px;
+}

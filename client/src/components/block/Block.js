@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import './Block.css';
 import { getBlocks } from '../../redux/actions/block.actions';
 
 export const Block = () => {
@@ -12,8 +13,8 @@ export const Block = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      {blocks?.map(block => <div key={block.id}>{block.id}</div>)}
+    <div id={'blocksContainer'}>
+      {blocks?.map(block => <div key={block.id} className={"block"}>{block.id}</div>)}
     </div>
   );
 };
