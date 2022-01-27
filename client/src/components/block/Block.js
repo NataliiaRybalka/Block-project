@@ -38,7 +38,6 @@ export const Block = () => {
     })
 
     const powerbank = powerbanks.find(powerbank => powerbank.id === myPowerBank);
-    
     dispatch(changePowerbankInStock(powerbank));
   };
 
