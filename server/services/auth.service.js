@@ -1,32 +1,32 @@
 import { BadRequest } from '../constants/responseCodes.enum';
 import { hashPassword } from '../helpers/passwordHasher';
-import registrRepository from '../repositories';
-import userRepository from '../repositories';
-import tokenService from './tokens.service';
+import { createUserRepository } from '../repositories/auth.repository';
+import { getUserByEmailRepository, getUsersRepository } from '../repositories/user.repository';
+import { createTokensService, getTokensService } from './token.service';
 
 export const createUserService = async (userData) => {
   try {
-      const { login, email, password } = userData;
-      const hashedPassword = await hashPassword(password);
+    const { login, email, password } = userData;
+    const hashedPassword = await hashPassword(password);
 
-      let arrayUsers = await userRepository.getUsers();
-      arrayUsers = arrayUsers.toJSON();
+    let arrayUsers = await getUsersRepository();
+    arrayUsers = arrayUsers.toJSON();
 
-      if (!arrayUsers.length) {
-          await registrRepository.createUser(login, email, hashedPassword);
-      }
+    if (!arrayUsers.length) {
+      await createUserRepository(login, email, hashedPassword);
+    }
 
-      let user = await userRepository.getUserByEmail(email);
-      user = user.toJSON();
+    let user = await getUserByEmailRepository(email);
+    user = user.toJSON();
 
-      await tokenService.createTokens(user.id);
-      const userTokens = await tokenService.getTokens(user.id);
+    await createTokensService(user.id);
+    const userTokens = await getTokensService(user.id);
 
-      return {
-          user,
-          userTokens
-      };
+    return {
+      user,
+      userTokens
+    };
   } catch (e) {
-      throw new Error(BadRequest, 'User was not created.');
+    throw new Error(BadRequest, 'User was not created.');
   }
 };
