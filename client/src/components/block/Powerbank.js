@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useAlert } from 'react-alert';
 
 import './Block.css';
 import { saveToMyPowerbank, changePowerbankInStock } from '../../redux/actions/block.actions';
@@ -7,6 +8,7 @@ export const Powerbank = ({ powerbank }) => {
   const dispatch = useDispatch();
   const myPowerBank = useSelector(state => state.blockReducer.myPowerBank);
   const blocks = useSelector(state => state.blockReducer.blocks);
+  const alert = useAlert();
 
   const takePowerbank = (powerbank) => {
     if (!myPowerBank) {
@@ -22,7 +24,7 @@ export const Powerbank = ({ powerbank }) => {
         return block;
       })
     } else {
-      throw new Error('You can not take more');
+      alert.show('You can not take more');
     }
   };
 
