@@ -1,5 +1,6 @@
 import { OK } from "../constants/responseCodes.enum";
 import { getBlocksService, changePowerbankInStockService, getUserPowerbankService } from '../services/block.service';
+import { io } from "../app";
 
 export const getBlocks = async (req, res, next) => {
   try {
@@ -11,7 +12,8 @@ export const getBlocks = async (req, res, next) => {
 
 export const changePowerbankInStock = async (req, res, next) => {
   try {
-    await changePowerbankInStockService(req.params, req.body, req.userId);
+    const powerbank = await changePowerbankInStockService(req.params, req.body, req.userId);
+    io.emit('update_powerbank_position', powerbank);
     res.status(OK).json('OK');
   } catch (e) {
     next(e);

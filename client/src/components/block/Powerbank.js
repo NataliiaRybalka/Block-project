@@ -6,7 +6,7 @@ import { saveToMyPowerbank, changePowerbankInStock } from '../../redux/actions/b
 export const Powerbank = ({ powerbank }) => {
   const dispatch = useDispatch();
   const myPowerBank = useSelector(state => state.blockReducer.myPowerBank);
-  const blocks = useSelector(state => state.blockReducer.blocks);
+  let blocks = useSelector(state => state.blockReducer.blocks);
 
   const takePowerbank = (powerbank) => {
     if (!myPowerBank) {

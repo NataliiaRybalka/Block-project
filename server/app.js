@@ -1,9 +1,8 @@
 import cors from 'cors';
 import express from 'express';
-// import { Server } from 'socket.io';
+import { Server } from 'socket.io';
 
-import { PORT } from './constants/env.constants';
-// import { ioFunc } from './helpers/socket.helper';
+import { PORT, LOCALHOST } from './constants/env.constants';
 import authRouter from './routes/auth.router';
 import blockRouter from './routes/block.router';
 
@@ -24,11 +23,9 @@ const connection = app.listen(PORT, () => {
     console.log(`App listen ${ PORT }`);
 });
 
-// export const io = new Server(connection, {
-//     cors: {
-//         origin: LOCALHOST,
-//         methods: ['GET', 'POST', 'PUT', 'DELETE']
-//     }
-// });
-
-// ioFunc(io);
+export const io = new Server(connection, {
+    cors: {
+        origin: LOCALHOST,
+        methods: ['GET', 'POST', 'PUT', 'DELETE']
+    }
+});

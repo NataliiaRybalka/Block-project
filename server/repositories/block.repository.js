@@ -19,6 +19,14 @@ export const getBlocksWithPowerbanksRepository = async () => {
   }
 };
 
+export const getPowerbankByIdRepository = async (id) => {
+  try {
+    return await Powerbank.where({ id }).fetchAll();
+  } catch (e) {
+    throw new Error(NotFound, 'Blocks not found');
+  }
+};
+
 export const changePowerbankInStockRepository = async (id, in_stock, block_id) => {
   try {
     return await Powerbank.forge({ id }).save({ in_stock, block_id });

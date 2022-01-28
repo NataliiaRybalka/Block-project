@@ -1,6 +1,4 @@
-import { NotFound, BadRequest } from "../constants/responseCodes.enum";
-
-import { getBlocksRepository, getBlocksWithPowerbanksRepository, changePowerbankInStockRepository } from '../repositories/block.repository';
+import { getBlocksRepository, getBlocksWithPowerbanksRepository, changePowerbankInStockRepository, getPowerbankByIdRepository } from '../repositories/block.repository';
 import { updateUserPowerbankRepository, getUserPowerbankRepository } from '../repositories/user.repository';
 
 export const getBlocksService = async () => {
@@ -24,7 +22,7 @@ export const changePowerbankInStockService = async (powerbankId, powerbank, user
     const powerbankIdForUser = !powerbank.in_stock ? powerbankId.id : null;
     await updateUserPowerbankRepository(userId, powerbankIdForUser);
 
-    return;
+    return await getPowerbankByIdRepository(powerbankId.id);
   } catch (e) {
     throw new ErrorHandler(e.status, e.message);
   }

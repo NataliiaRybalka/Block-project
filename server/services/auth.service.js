@@ -1,4 +1,4 @@
-import { BadRequest, Unauthorized } from '../constants/responseCodes.enum';
+import { Unauthorized } from '../constants/responseCodes.enum';
 import { hashPassword, comparePassword } from '../helpers/passwordHasher';
 import { createUserRepository } from '../repositories/auth.repository';
 import { getUserByEmailRepository } from '../repositories/user.repository';
