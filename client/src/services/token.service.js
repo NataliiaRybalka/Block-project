@@ -11,7 +11,7 @@ export const setTokenAndRoleServiceWherLogin = (id, tokens) => {
 export const updateTokens = async () => {
   const { request } = httpHelper();
   const res = await request(`${LOCALHOST}auth/create-tokens`, null, POST, null, {}, localStorage.getItem('refresh_token'));
-
+console.log(res.data);
   localStorage.setItem('access_token', res.data.access_token);
   localStorage.setItem('refresh_token', res.data.refresh_token);
   // window.location.reload(); 

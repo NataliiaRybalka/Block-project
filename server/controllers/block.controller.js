@@ -13,7 +13,7 @@ export const getBlocks = async (req, res, next) => {
 export const changePowerbankInStock = async (req, res, next) => {
   try {
     const powerbank = await changePowerbankInStockService(req.params, req.body, req.userId);
-    io.emit('update_powerbank_position', powerbank);
+    io.emit('update_powerbank_position', powerbank.toJSON()[0]);
     res.status(OK).json('OK');
   } catch (e) {
     next(e);

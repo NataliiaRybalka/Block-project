@@ -52,9 +52,9 @@ export function* getUserPowerbankWorker() {
       throw payload;
     }
   } catch (e) {
-    if (e.status === Unauthorized && e.data === 'Wrong token') {
-      yield put(updateTokens());
-    }
+    // if (e.status === Unauthorized && e.data === 'Wrong token') {
+    //   yield put(updateTokens());
+    // }
   }
 };
 const getUserPowerbank = async () => {

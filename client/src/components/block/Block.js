@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import './Block.css';
 import { getPowerbanks, getUserPowerbank, returnMyPowerbank, changePowerbankInStock } from '../../redux/actions/block.actions';
 import { Powerbank } from "./Powerbank";
-import { socket } from '../../constants/socket';
 
 export const Block = () => {
   const dispatch = useDispatch();
@@ -50,11 +49,6 @@ export const Block = () => {
       return block;
     })
   };
-
-  socket.on('update_powerbank_position', (powerbankBySocket) => {
-    console.log(powerbankBySocket);
-    powerbanks = powerbankBySocket;
-  });
 
   return (
     <div id={'blocksContainer'}>
