@@ -71,18 +71,19 @@ export const Block = () => {
 
   return (
     <div id={'blocksContainer'}>
-      {!!blocksArray.length ? blocksArray.map(block => (
-        <div className={doReturn && !block.powerbank?.in_stock ? 'block select' : 'block'} key={block.id}>
-          <span onClick={() => onSelectEmptyBlock(block.id)} className={'blockName'}>{block.id} Block</span>
-          <Powerbank powerbank={block.powerbank} key={!!block.powerbank && block.powerbank.id} />
-        </div>
-      ))
-      : blocks.map(block => (
-        <div className={doReturn && !block.powerbank?.in_stock ? 'block select' : 'block'} key={block.id}>
-          <span onClick={() => onSelectEmptyBlock(block.id)} className={'blockName'}>{block.id} Block</span>
-          <Powerbank powerbank={block.powerbank} key={!!block.powerbank && block.powerbank.id} />
-        </div>
-      ))
+      {!!blocksArray.length 
+        ? blocksArray.map(block => (
+          <div className={doReturn && !block.powerbank?.in_stock ? 'block select' : 'block'} key={block.id}>
+            <span onClick={() => onSelectEmptyBlock(block.id)} className={'blockName'}>{block.id} Block</span>
+            <Powerbank powerbank={block.powerbank} key={!!block.powerbank && block.powerbank.id} />
+          </div>
+        ))
+        : blocks.map(block => (
+          <div className={doReturn && !block.powerbank?.in_stock ? 'block select' : 'block'} key={block.id}>
+            <span onClick={() => onSelectEmptyBlock(block.id)} className={'blockName'}>{block.id} Block</span>
+            <Powerbank powerbank={block.powerbank} key={!!block.powerbank && block.powerbank.id} />
+          </div>
+        ))
       }
     </div>
   );
