@@ -1,11 +1,10 @@
 import { put, call } from "redux-saga/effects";
 
 import { GET_POWERBANKS, GET_USER_POWERBANKS } from "../redux/types/block.types";
-import { OK, Unauthorized } from '../constants/responseCodes.enum';
+import { OK } from '../constants/responseCodes.enum';
 import { httpHelper } from '../helpers/http.helper';
 import { LOCALHOST } from '../constants/contants';
 import { PUT } from "../constants/httpMethods";
-import { updateTokens } from '../services/token.service';
 
 export function* getPowerbanksWorker() {
   try {
@@ -16,9 +15,7 @@ export function* getPowerbanksWorker() {
       throw payload;
     }
   } catch (e) {
-    if (e.status === Unauthorized && e.data === 'Wrong token') {
-      yield put(updateTokens());
-    }
+    throw new Error(e);
   }
 };
 const getPowerbanks = async () => {
@@ -33,9 +30,7 @@ export function* changePowerbankInStockWorker(data) {
       throw payload;
     }
   } catch (e) {
-    if (e.status === Unauthorized && e.data === 'Wrong token') {
-      yield put(updateTokens());
-    }
+    throw new Error(e);
   }
 };
 const changePowerbankInStock = async (powerbank) => {
@@ -52,9 +47,7 @@ export function* getUserPowerbankWorker() {
       throw payload;
     }
   } catch (e) {
-    // if (e.status === Unauthorized && e.data === 'Wrong token') {
-    //   yield put(updateTokens());
-    // }
+    throw new Error(e);
   }
 };
 const getUserPowerbank = async () => {
