@@ -27,13 +27,3 @@ export const getTokensLoginService = async (userId) => {
     throw new ErrorHandler(e.status, e.message);
   }
 };
-
-export const createNewTokenPairService = async (userId) => {
-  try {
-    await createTokensService(userId);
-    
-    return await getTokensRegistrService(userId);
-  } catch (e) {
-    throw new ErrorHandler(e.status, e.message);
-  }
-};

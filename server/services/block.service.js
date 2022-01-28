@@ -1,4 +1,4 @@
-import { getBlocksRepository, getBlocksWithPowerbanksRepository, changePowerbankInStockRepository, getPowerbankByIdRepository } from '../repositories/block.repository';
+import { getBlocksRepository, getBlocksWithPowerbanksRepository, changePowerbankInStockRepository } from '../repositories/block.repository';
 import { updateUserPowerbankRepository, getUserPowerbankRepository } from '../repositories/user.repository';
 
 export const getBlocksService = async () => {
