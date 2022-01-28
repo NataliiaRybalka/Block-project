@@ -27,3 +27,16 @@ export const getTokensLoginService = async (userId) => {
     throw new ErrorHandler(e.status, e.message);
   }
 };
+
+export const createNewTokenPairService = async (userId) => {
+  try {
+    await createTokensService(userId);
+
+    let userTokens = await getTokensLoginService(userId);
+    userTokens = userTokens.toJSON();
+
+    return userTokens[userTokens.length - 1];
+  } catch (e) {
+    throw new ErrorHandler(e.status, e.message);
+  }
+};
