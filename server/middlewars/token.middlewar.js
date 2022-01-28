@@ -25,7 +25,7 @@ export const checkAccessToken = async (req, res, next) => {
 
 export const checkRefreshToken = async (req, res, next) => {
   try {
-  const token = req.get(REFRESH_TOKEN);
+    const token = req.get('refresh_token');
 
     let userTokens = await getTokenByRTRepository(token);
     userTokens = userTokens.toJSON();

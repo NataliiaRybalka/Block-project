@@ -21,7 +21,6 @@ export const Powerbank = ({ powerbank }) => {
         }
         return block;
       })
-      console.log('take', blocks);
     } else {
       throw new Error('You can not take more');
     }

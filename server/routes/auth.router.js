@@ -1,7 +1,8 @@
 import { Router } from 'express';
 
 import { checkDataValidity, checkIsEmailBusy, checkIsEmailCorrect } from '../middlewars/auth.middlewar';
-import { createUser, loginUser } from '../controllers/auth.controller';
+import { checkRefreshToken } from '../middlewars/token.middlewar';
+import { createUser, loginUser, createNewTokenPair } from '../controllers/auth.controller';
 
 const router = Router();
 
@@ -16,6 +17,12 @@ router.post(
     '/login',
     checkIsEmailCorrect,
     loginUser
+);
+
+router.post(
+    '/create-tokens',
+    checkRefreshToken,
+    createNewTokenPair
 );
 
 export default router;

@@ -13,7 +13,7 @@ export const getBlocksService = async () => {
       blocks
     }
   } catch (e) {
-    throw new Error(NotFound, 'Blocks not found');
+    throw new ErrorHandler(e.status, e.message);
   }
 };
 
@@ -26,7 +26,7 @@ export const changePowerbankInStockService = async (powerbankId, powerbank, user
 
     return;
   } catch (e) {
-    throw new Error(BadRequest, 'Powerblock was not updated');
+    throw new ErrorHandler(e.status, e.message);
   }
 };
 
@@ -34,6 +34,6 @@ export const getUserPowerbankService = async (userId) => {
   try {
     return await getUserPowerbankRepository(userId.userId);
   } catch (e) {
-    throw new Error(BadRequest, 'Powerblock was not updated');
+    throw new ErrorHandler(e.status, e.message);
   }
 };

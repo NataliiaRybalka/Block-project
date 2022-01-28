@@ -22,7 +22,7 @@ export const createUserService = async (userData) => {
       userTokens
     };
   } catch (e) {
-    throw new Error(BadRequest, 'User was not created.');
+    throw new ErrorHandler(e.status, e.message);
   }
 };
 
@@ -51,6 +51,6 @@ export const loginUserService = async (userData) => {
       userTokens: userTokens[userTokens.length - 1]
   };
   } catch (e) {
-      throw new Error(Unauthorized, 'Wrong email or password');
+    throw new ErrorHandler(e.status, e.message);
   }
 };

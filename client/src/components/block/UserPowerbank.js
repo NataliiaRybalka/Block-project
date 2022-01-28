@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { doReturn } from '../../redux/actions/block.actions';
 
-export const User = () => {
+export const UserPowerbank = () => {
 
   const dispatch = useDispatch();
   const myPowerBank = useSelector(state => state.blockReducer.myPowerBank);
