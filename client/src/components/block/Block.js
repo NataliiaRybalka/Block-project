@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import './Block.css';
 import { getPowerbanks, getUserPowerbank, returnMyPowerbank, changePowerbankInStock } from '../../redux/actions/block.actions';
 import { Powerbank } from "./Powerbank";
+import { socket } from "../../constants/socket";
 
 export const Block = () => {
   const dispatch = useDispatch();
-  let powerbanks = useSelector(state => state.blockReducer.powerbanks);
-  let blocks = useSelector(state => state.blockReducer.blocks);
+  const powerbanks = useSelector(state => state.blockReducer.powerbanks);
+  const blocks = useSelector(state => state.blockReducer.blocks);
   const myPowerBank = useSelector(state => state.blockReducer.myPowerBank);
   const doReturn = useSelector(state => state.blockReducer.return);
 
@@ -49,6 +50,12 @@ export const Block = () => {
       return block;
     })
   };
+
+  useEffect(() => {
+    socket.on('update_powerbank_position', (data) => {
+      console.log(data);
+    });
+  }, []);
 
   return (
     <div id={'blocksContainer'}>

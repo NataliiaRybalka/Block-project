@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './Block.css';
 import { saveToMyPowerbank, changePowerbankInStock } from '../../redux/actions/block.actions';
-import { socket } from '../../constants/socket';
 
 export const Powerbank = ({ powerbank }) => {
-  const [powerbankSocket, setPowerbankSocket] = useState(null);
-
   const dispatch = useDispatch();
   const myPowerBank = useSelector(state => state.blockReducer.myPowerBank);
   const blocks = useSelector(state => state.blockReducer.blocks);
@@ -29,13 +25,6 @@ export const Powerbank = ({ powerbank }) => {
       throw new Error('You can not take more');
     }
   };
-
-  useEffect(() => {
-    socket.on('update_powerbank_position', (powerbankSocket) => {
-      console.log(powerbankSocket);
-      setPowerbankSocket(powerbankSocket);
-    });
-  }, [powerbankSocket]);
 
   return (
     <button onClick={() => takePowerbank(powerbank)} className={'powerbankBtn'}>

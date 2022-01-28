@@ -22,7 +22,7 @@ export const changePowerbankInStockService = async (powerbankId, powerbank, user
     const powerbankIdForUser = !powerbank.in_stock ? powerbankId.id : null;
     await updateUserPowerbankRepository(userId, powerbankIdForUser);
 
-    return await getPowerbankByIdRepository(powerbankId.id);
+    return await getBlocksService();
   } catch (e) {
     throw new ErrorHandler(e.status, e.message);
   }
